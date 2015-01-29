@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <h1><%= @user.username %></h1>
+</p>
+
+<p>
+	Has made <%= pluralize(@user.ratings.count,'rating') %>.<br>
+	Average: <%= @user.average_rating%>
+</p>
+
+<p>
+	<h2>Ratings</h2>
+</p>
+
+<ul>
+
+</ul>
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

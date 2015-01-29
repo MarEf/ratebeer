@@ -6,4 +6,4 @@
  <% end %>
 </ul>
 
-<%= link_to 'New Rating', new_ratings_path %><br>
+<%= link_to 'New Rating', new_rating_path %><br>
