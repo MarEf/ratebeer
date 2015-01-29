@@ -1,4 +1,4 @@
-<h1>Change the password of <%=@user.username%></h1>
+<h1>Change the password of <%=@user%></h1>
 
 <%= render 'form' %>
 
