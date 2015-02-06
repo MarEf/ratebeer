@@ -11,7 +11,7 @@ describe "On individual user's page" do
     sign_in(username:"Pekka", password:"Foobar1")
 		user.ratings << FactoryGirl.create(:rating, beer:beer)
     user.ratings << FactoryGirl.create(:rating2, beer:beer)
-		user2.ratings << FactoryGirl.create(:rating2, beer:beer)
+		user2.ratings << FactoryGirl.create(:rating, beer:beer, score:30)
   end
 
 	it "displays user's own ratings" do
@@ -27,5 +27,11 @@ describe "On individual user's page" do
 		user2.ratings.each do |rating|
       expect(page).to_not have_content rating
     end		
+	end
+
+	it "allows a user to delete their own rating" do
+		visit user_path(user)
+		click_link("delete", :match => :first)
+
 	end
 end

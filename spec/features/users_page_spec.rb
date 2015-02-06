@@ -28,4 +28,9 @@ describe "On individual user's page" do
       expect(page).to_not have_content rating
     end		
 	end
+
+	it "allows a user to delete their own rating" do
+		visit user_path(user)
+		click_link("delete", :match => :first)
+	end
 end
