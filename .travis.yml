@@ -1,10 +1,15 @@
 language: ruby
-
 rvm:
- - 2.0.0
-
+- 2.0.0
 script:
- - bundle exec rake db:migrate --trace
- - RAILS_ENV=test bundle exec rake db:migrate --trace
- - bundle exec rake db:test:prepare
- - bundle exec rspec -fd spec/
+- bundle exec rake db:migrate --trace
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rspec -fd spec/
+deploy:
+  provider: heroku
+  api_key:
+    secure: Ypu+nuo+k3eF6i5O/A99+9VczAHfbN6itOuSkU5E1zvONwvzHA3zvLhHz2V8J2MfiHck9M7vq7YnAomjlWbjCd6Hi265VNAbLMlMVHBk9EsLDsv1qZxy3yaDJcMKfb38tbGWsmut41E63N66ncvjzBBDoxWmJ+e97x7uJgi3yFM=
+  app: serene-ravine-4597
+  on:
+    repo: MarEf/ratebeer
