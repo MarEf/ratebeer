@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 	get 'places', to: 'places#index'
 	post 'places', to: 'places#search'
 
+	delete 'memberships', to: 'memberships#destroy'
+
 	get 'signup', to: 'users#new'
   get 'signin', to: 'sessions#new'
   delete 'signout', to: 'sessions#destroy'

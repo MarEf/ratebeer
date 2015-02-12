@@ -27,6 +27,9 @@ describe "Places" do
 	end
 
 	it "gives a notification if no locations are found" do
+		allow(BeermappingApi).to receive(:places_in).with("kumpula").and_return(
+      []
+    )
 		visit places_path
 		fill_in('city', with: 'kumpula')
 		click_button "Search"
