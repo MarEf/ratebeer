@@ -1,10 +1,7 @@
 class BeersController < ApplicationController
   before_action :set_beer, only: [:show, :edit, :update, :destroy]
 	before_action :set_breweries_and_styles_for_template, only: [:new, :edit, :create]
-<<<<<<< HEAD
 	before_action :ensure_that_signed_in, except: [:index, :show]
-=======
->>>>>>> b3c29d0699471dd0fe87ad835351b3c994ed757a
 
   # GET /beers
   # GET /beers.json
@@ -15,11 +12,13 @@ class BeersController < ApplicationController
   # GET /beers/1
   # GET /beers/1.json
   def show
+		@rating = Rating.new
+    @rating.beer = @beer
   end
 
   def set_breweries_and_styles_for_template
     @breweries = Brewery.all
-    @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter"]
+    @styles = Style.all
   end
 
   # GET /beers/new

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :styles
+
   resources :memberships
 
   resources :beer_clubs
@@ -8,8 +10,8 @@ Rails.application.routes.draw do
 	resources :users
 	resources :ratings, only: [:index, :new, :create, :destroy]
 	resource :session, only: [:new, :create, :delete]
+	resources :places, only:[:index, :show]
 
-	get 'places', to: 'places#index'
 	post 'places', to: 'places#search'
 
 	delete 'memberships', to: 'memberships#destroy'

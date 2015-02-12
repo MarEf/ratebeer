@@ -1,0 +1,5 @@
+class AddStyleIdToBeers < ActiveRecord::Migration
+  def change
+		
+  end
+end
