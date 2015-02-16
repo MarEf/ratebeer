@@ -32,11 +32,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 gem 'httparty'
-
 gem 'bootstrap-sass'
-group :development do
-  gem 'rails_layout'
-end
 
 group :production do
    gem 'pg'

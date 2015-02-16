@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Beer club', new_beer_club_path, class:'btn btn-primary' %>
+<%= link_to 'New Beer club', new_beer_club_path %>
