@@ -8,11 +8,16 @@ class Beer < ActiveRecord::Base
 	validates :name, presence: true
 	validates :style_id, presence: true
 
-	def average_rating
-		return "#{ratings.average(:score)}"
-	end
+#	def average_rating
+#		return "#{ratings.average(:score)}"
+#	end
 
 	def to_s
 		return "#{name}, #{brewery.name}"
 	end
+
+	def self.top(n)
+    sorted_by_rating_in_desc_order = Beer.all.sort_by{ |b| -(b.average_rating||0) }
+		return sorted_by_rating_in_desc_order.take(n)
+ 	end
 end

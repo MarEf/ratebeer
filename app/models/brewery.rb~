@@ -1,8 +1,5 @@
 class Brewery < ActiveRecord::Base
 	include RatingAverage
-	has_many :beers, dependent: :destroy
-	has_many :ratings, through: :beers
-
 	validates :name, presence: true
 	validates :year, numericality: { greater_than_or_equal_to: 1042,
                                     less_than_or_equal_to: Date.today.year,
@@ -13,6 +10,7 @@ class Brewery < ActiveRecord::Base
 
   has_many :beers, :dependent => :destroy
   has_many :ratings, :through => :beers
+
  def print_report
     puts name
     puts "established at year #{year}"
@@ -28,4 +26,8 @@ class Brewery < ActiveRecord::Base
 		return "#{ratings.average(:score)}"
 	end
 
+	def self.top(n)
+    sorted_by_rating_in_desc_order = Brewery.all.sort_by{ |b| -(b.average_rating||0) }
+		return sorted_by_rating_in_desc_order.take(n)
+ 	end
 end
