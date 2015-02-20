@@ -11,6 +11,9 @@ Rails.application.routes.draw do
 	resources :ratings, only: [:index, :new, :create, :destroy]
 	resource :session, only: [:new, :create, :delete]
 	resources :places, only:[:index, :show]
+	resources :breweries do
+    post 'toggle_activity', on: :member
+  end
 
 	post 'places', to: 'places#search'
 

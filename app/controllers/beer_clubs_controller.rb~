@@ -1,4 +1,4 @@
-class BeerClubsController < ApplicationController@beer_
+class BeerClubsController < ApplicationController
   before_action :set_beer_club, only: [:show, :edit, :update, :destroy]
 
   # GET /beer_clubs

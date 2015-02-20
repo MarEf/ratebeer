@@ -10,10 +10,17 @@ class User < ActiveRecord::Base
 											 format: {with: /(?=.*[A-Z])(?=.*\d)/, #If I ever see these again it will be too soon...
 											 message: "Password needs to have at least one capital letter and one number."}	
 
+
 	has_many :ratings, dependent: :destroy
 	has_many :beers, through: :ratings
 	has_many :memberships, dependent: :destroy
 	has_many :beer_clubs, through: :memberships
+	
+	after_initialize :defaults
+
+	def defaults
+    self.admin ||= false
+  end
 
 	def favorite_beer
 		return nil if ratings.empty?
