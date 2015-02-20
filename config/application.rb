@@ -24,5 +24,8 @@ module Ratebeer
     config.active_record.raise_in_transactional_callbacks = true
 
 		config.autoload_paths += Dir["#{Rails.root}/lib"]
+
+		# Always forcs SSL connection
+		config.force_ssl = true
   end
 end
