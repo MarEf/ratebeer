@@ -6,7 +6,7 @@
 
 <p>
 	Has made <%= pluralize(@user.ratings.count,'rating') %>.<br>
-	Average: <%= @user.average_rating%>
+	Average: <%= round(@user.average_rating)%>
 </p>
 
 <% if @user.beer_clubs.any? %>
