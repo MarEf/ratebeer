@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 	after_initialize :defaults
 
 	def defaults
-    self.level ||= 'Opiskelija'
+    self.admin ||= false
   end
 
 	def favorite_beer

@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
 
 	def defaults
     self.admin ||= false
+		self.locked ||= false
   end
 
 	def favorite_beer
