@@ -25,7 +25,5 @@ module Ratebeer
 
 		config.autoload_paths += Dir["#{Rails.root}/lib"]
 
-		# Always forcs SSL connection
-		config.force_ssl = true
   end
 end
