@@ -68,5 +68,6 @@ group :test do
 	gem 'selenium-webdriver'
 	gem 'rspec-its'
 	gem 'simplecov', require: false
+	gem 'database_cleaner'
 end
 
