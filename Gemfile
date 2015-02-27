@@ -46,6 +46,7 @@ group :production do
 end
 
 group :development, :test do
+	gem 'rack-mini-profiler'
 	gem 'rspec-rails', '~> 3.0'
 	gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

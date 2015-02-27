@@ -2,6 +2,17 @@ class BreweriesController < ApplicationController
   before_action :set_brewery, only: [:show, :edit, :update, :destroy]
   before_action :ensure_that_signed_in, except: [:index, :show]
 	before_action :ensure_that_admin, only: [:destroy]
+	before_action :expire_related_cache, only:[:create, :update, :destroy]
+	
+	def skip_if_cached
+    @order = params[:order] || 'name'
+    return render :index if fragment_exist?( "brewerylist-#{@order}"  )
+  end
+
+	def expire_related_cache
+		["brewerylist-name", "brewerylist-year"].each{ |f| expire_fragment(f) }
+	end
+
   # GET /breweries
   # GET /breweries.json
   def index

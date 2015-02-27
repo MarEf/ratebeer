@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<% cache @brewery do %>
 <p>
   <h2>
    <%= @brewery.name %>
@@ -33,6 +34,8 @@ Beers have not been rated yet.
 Has <%= pluralize(@brewery.ratings.count,'rating') %>, average <%= round(@brewery.average_rating) %>
 <% end %>
 </p>
-
+<p>
+	<%= link_to "change activity", toggle_activity_brewery_path(@brewery.id), method: :post, class: "btn btn-primary" %>
+</p>
 <%= link_to 'Edit', edit_brewery_path(@brewery) %> |
 <%= link_to 'Back', breweries_path %>
