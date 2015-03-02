@@ -1,5 +1,7 @@
 <h2>Rating Statistics</h2>
 
+<% cache "ratingstats", skip_digest: true, expires_in:30.minutes do %>
+
 <p> Number of ratings: <%= @ratings.count %> </p>
 
 <div class="row">
@@ -37,7 +39,7 @@
       <tr>
         <td><%= link_to user.username, user %></td>
 				<td><%= user.favorite_beer %></td>
-				<td><%= user.favorite_style.name %></td>
+				<td><%= user.favorite_style %></td>
 				<td><%= user.ratings.count%></td>
       </tr>
     <% end %>
@@ -62,5 +64,7 @@
     <% end %>
   </tbody>
 </table>
+
+<%end%>
 
 <%= link_to 'New Rating', new_rating_path, class:'btn btn-primary' %><br>

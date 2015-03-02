@@ -1,4 +1,15 @@
 class RatingsController < ApplicationController
+	before_action :skip_if_cached, only:[:index]
+	before_action :expire_related_cache, only:[:create, :destroy]
+
+  def skip_if_cached
+    return render :index if fragment_exist?( "ratingstats" )
+  end
+
+	def expire_related_cache
+		expire_fragment('ratingstats')
+	end
+
   def index
     @ratings = Rating.all
 		@top_breweries = Brewery.top 3
